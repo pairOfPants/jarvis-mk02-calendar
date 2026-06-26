@@ -12,15 +12,15 @@ class Event{
 
     enum REPEAT_TYPE { NONE, DAILY, WEEKLY, MONTHLY, YEARLY, N_DAYS, CUSTOM };
     //getters & setters
-    DateTime& getStartDateTime();
-    DateTime& getEndDateTime();
-    REPEAT_TYPE& getRepeatType();
-    std::string& getTitle();
-    std::string& getLocation();
-    std::string& getDescription();
-    int& getId();
-    std::string& getExternalId();
-    EventStatus& getStatus();
+    DateTime& getStartDateTime() const;
+    DateTime& getEndDateTime() const;
+    REPEAT_TYPE& getRepeatType() const;
+    std::string& getTitle() const;
+    std::string& getLocation() const;
+    std::string& getDescription() const;
+    int& getId() const;
+    std::string& getExternalId() const;
+    EventStatus& getStatus() const;
 
     int setStartDateTime(DateTime& startDateTime);
     int setEndDateTime(DateTime &endDatetime);

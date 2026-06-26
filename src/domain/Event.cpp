@@ -169,6 +169,7 @@ bool Event::operator<=(const Event& other){
     return title <= other.title;
 }
 
+//TODO: change this to check ID and no other field, ID's are unique
 bool Event::operator==(const Event& other){
     if(this->startDateTime != other.startDateTime) return false;
     if(this->endDateTime != other.endDateTime) return false;

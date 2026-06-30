@@ -32,14 +32,14 @@ Date::Date(std::string date_string) : date_string(date_string)
     if(pos == std::string::npos){
         throw std::invalid_argument("Invalid date format. Expected format: DD/MM/YYYY");   
     }
-    day = std::stoi(date_string.substr(0, pos)); //extracts the day from the string
+    month = std::stoi(date_string.substr(0, pos)); //extracts the day from the string
 
     date_string.erase(0, pos + 1); //removes the day and delimiter from the string
     pos = date_string.find(delimiter); //position of second delimeter
     if(pos == std::string::npos){
         throw std::invalid_argument("Invalid date format. Expected format: DD/MM/YYYY");
     }
-    month = std::stoi(date_string.substr(0, pos)); //extracts the month from the string
+    day = std::stoi(date_string.substr(0, pos)); //extracts the month from the string
     date_string.erase(0, pos + 1); //removes the month and delimiter from the string
     year = std::stoi(date_string); //the remaining string is the year
     date_string = "";

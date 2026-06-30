@@ -69,44 +69,29 @@ Event::Event(DateTime startDateTime, DateTime endDateTime, std::string title, st
 // }
 
 
-DateTime& Event::getStartDateTime() { return startDateTime; }
-DateTime& Event::getEndDateTime() { return endDateTime; }
-std::string& Event::getTitle() { return title; }
-std::string& Event::getDescription() { return description; }
-std::string& Event::getLocation() { return location; }
-Event::REPEAT_TYPE& Event::getRepeatType() { return repeatType; }
-int& Event::getId() { return id; }
-std::string& Event::getExternalId() { return externalId; }
-EventStatus& Event::getStatus() { return status; }
+DateTime Event::getStartDateTime() const { return startDateTime; }
+DateTime Event::getEndDateTime() const { return endDateTime; }
+std::string Event::getTitle() const { return title; }
+std::string Event::getDescription() const { return description; }
+std::string Event::getLocation() const { return location; }
+Event::REPEAT_TYPE Event::getRepeatType() const { return repeatType; }
+int Event::getId() const { return id; }
+std::string Event::getExternalId() const { return externalId; }
+Event::EventStatus Event::getStatus() const { return status; }
 
 int Event::setId(int id) {this->id = id; return 0; }
 int Event::setExternalId(std::string externalId) {this->externalId = externalId; return 0; }
 int Event::setStatus(EventStatus status) {this->status = status; return 0; }
 
+
 int Event::setStartDateTime(DateTime &startDateTime) {
-    if(DateTime::isValidDateTime(startDateTime))
-    {
-        this->startDateTime = startDateTime;
-        return 0;
-    }
-    else
-    {
-        throw std::invalid_argument("Invalid date value. Please ensure the date is valid.");
-        return -1;
-    }
+    this->startDateTime = startDateTime;
+    return 0;
 }
 
 int Event::setEndDateTime(DateTime &endDateTime) {
-    if(DateTime::isValidDateTime(endDateTime))
-    {
-        this->endDateTime = endDateTime;
-        return 0;
-    }
-    else
-    {
-        throw std::invalid_argument("Invalid date value. Please ensure the date is valid.");
-        return -1;
-    }
+    this->endDateTime = endDateTime;
+    return 0;
 }
 
 int Event::setLocation(std::string location) {

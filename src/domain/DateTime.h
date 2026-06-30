@@ -29,7 +29,7 @@ class DateTime
     bool operator==(const DateTime& other) const;
     friend std::ostream& operator<<(std::ostream& os, const DateTime& dt);
 
-    static bool isValidDateTime(DateTime dt);
+    //static bool isValidDateTime(DateTime dt);
 
     private:
     Date date;

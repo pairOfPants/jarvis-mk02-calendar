@@ -56,7 +56,32 @@ std::ostream& operator<<(std::ostream& os, const DateTime& dt)
     return os;
 }
 
-static bool isValidDateTime(DateTime dt)
+Date& DateTime::getDate()
+{
+    return date;
+}
+
+const Date& DateTime::getDate() const
+{
+    return date;
+}
+
+Time& DateTime::getTime()
+{
+    return time;
+}
+
+const Time& DateTime::getTime() const
+{
+    return time;
+}
+
+DateTime now()
+{
+    return DateTime(Date::getCurrentDate(), Time::getCurrentTime());
+}
+
+bool isValidDateTime(DateTime dt)
 {
     return (dt.getDate().getYear() >= 2000 &&
             dt.getDate().getMonth() >= 1 && dt.getDate().getMonth() <= 12 &&

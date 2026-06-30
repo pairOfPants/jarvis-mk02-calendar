@@ -11,16 +11,17 @@ class Event{
         Event& operator=(const Event& other) = default;
 
     enum REPEAT_TYPE { NONE, DAILY, WEEKLY, MONTHLY, YEARLY, N_DAYS, CUSTOM };
+    enum EventStatus { CONFIRMED, TENTATIVE, CANCELLED};
     //getters & setters
-    DateTime& getStartDateTime() const;
-    DateTime& getEndDateTime() const;
-    REPEAT_TYPE& getRepeatType() const;
-    std::string& getTitle() const;
-    std::string& getLocation() const;
-    std::string& getDescription() const;
-    int& getId() const;
-    std::string& getExternalId() const;
-    EventStatus& getStatus() const;
+    DateTime getStartDateTime() const;
+    DateTime getEndDateTime() const;
+    REPEAT_TYPE getRepeatType() const;
+    std::string getTitle() const;
+    std::string getLocation() const;
+    std::string getDescription() const;
+    int getId() const;
+    std::string getExternalId() const;
+    EventStatus getStatus() const;
 
     int setStartDateTime(DateTime& startDateTime);
     int setEndDateTime(DateTime &endDatetime);
@@ -67,11 +68,4 @@ class Event{
     time_t lastModified = 0;
     //Provider provider;
 
-};
-
-enum class EventStatus
-{
-    CONFIRMED,
-    TENTATIVE,
-    CANCELLED
 };

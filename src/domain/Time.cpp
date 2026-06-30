@@ -17,6 +17,33 @@ Time::Time(int hour, int minute, int second){
     this->second = second;
 }
 
+Time::Time(std::string time_string) {
+    std::string delimiter = ":";
+    size_t pos = time_string.find(delimiter); //position of first delimeter
+    if(pos == std::string::npos){
+        throw std::invalid_argument("Invalid time format. Expected format: HH:MM:SS");
+    }
+    hour = std::stoi(time_string.substr(0, pos)); //extracts the hour from the string
+    if(hour < 0 || hour > 23){
+        throw std::invalid_argument("Invalid hour value. Hour must be between 0 and 23.");
+    }
+    time_string.erase(0, pos + 1); //removes the hour and delimiter from the string
+    pos = time_string.find(delimiter); //position of second delimeter
+    if(pos == std::string::npos){
+        throw std::invalid_argument("Invalid time format. Expected format: HH:MM:SS");
+    }
+    minute = std::stoi(time_string.substr(0, pos)); //extracts the minute from the string
+    if(minute < 0 || minute > 59){
+        throw std::invalid_argument("Invalid minute value. Minute must be between 0 and 59.");
+    }
+    time_string.erase(0, pos + 1); //removes the minute and delimiter from the string
+    second = std::stoi(time_string); //the remaining string is the second
+    if(second < 0 || second > 59){
+        throw std::invalid_argument("Invalid second value. Second must be between 0 and 59.");
+    }
+
+}
+
 int Time::getHour() { return hour; }
 int Time::getMinute() { return minute; }
 int Time::getSecond() { return second; }

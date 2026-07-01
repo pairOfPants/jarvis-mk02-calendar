@@ -16,10 +16,10 @@ int main()
     registerDateTests(runner);
     registerTimeTests(runner);
     registerDateTimeTests(runner);
-    //registerEventTests(runner);
+    registerEventTests(runner);
     
     //Application Layer Tests
-    //registerCalendarServiceTests(runner);
+    registerCalendarServiceTests(runner);
 
     //Future Layers Below
 

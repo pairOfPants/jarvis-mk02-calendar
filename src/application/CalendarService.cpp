@@ -69,6 +69,9 @@ std::vector<const Event*> CalendarService::getEventsOnDate(const DateTime& dateT
 
 std::vector<const Event*> CalendarService::getEventsInRange(const DateTime& startDateTime, const DateTime& endDateTime) const
 {
+    if (startDateTime > endDateTime) {
+        throw std::invalid_argument("Start date must be before end date.");
+    }
     std::vector<const Event*> eventPtrs;
     for (const auto& event : events) {
         if (event.getStartDateTime() >= startDateTime && event.getEndDateTime() <= endDateTime)  {

@@ -98,29 +98,30 @@ Date& Date::operator=(const Date& oldDate) {
     return *this;
 }
 
-bool Date::operator>(const Date& other)const {
-    if(this-> year > other.year && this->month > other.month && this->day > other.day){
-        return true;
+bool Date::operator>(const Date& other)const 
+{
+    if(!(this->year > other.year || this->month > other.month || this->day > other.day)){
+        return false;
     }
-    return false;
+    return true;
 }
 
 bool Date::operator>=(const Date& other)const {
-    if(this-> year >= other.year && this->month >= other.month && this->day >= other.day){
+    if(*this > other || *this == other){
         return true;
     }
     return false;
 }
 
 bool Date::operator<(const Date& other) const {
-    if(this-> year < other.year && this->month < other.month && this->day < other.day){
+    if(!(*this >= other)) {
         return true;
     }
     return false;
 }
 
 bool Date::operator<=(const Date& other)const {
-    if(this-> year <= other.year && this->month <= other.month && this->day <= other.day){
+    if(!(*this > other)) {
         return true;
     }
     return false;

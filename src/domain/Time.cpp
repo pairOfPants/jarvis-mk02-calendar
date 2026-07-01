@@ -86,15 +86,15 @@ Time& Time::operator=(const Time& oldTime) {
 
 bool Time::operator>(const Time& other) const
 {
-    if(this->hour > other.hour && this->minute > other.minute && this->second > other.second){
-        return true;
+    if(!(this->hour > other.hour || this->minute > other.minute || this->second > other.second)){
+        return false;
     }
-    return false;
+    return true;
 }
 
 bool Time::operator>=(const Time& other) const
 {
-    if(this->hour >= other.hour && this->minute >= other.minute && this->second >= other.second){
+    if(*this > other || *this == other){
         return true;
     }
     return false;
@@ -102,7 +102,7 @@ bool Time::operator>=(const Time& other) const
 
 bool Time::operator<(const Time& other) const
 {
-    if(this->hour < other.hour && this->minute < other.minute && this->second < other.second){
+    if(!(*this >= other)) {
         return true;
     }
     return false;
@@ -110,7 +110,7 @@ bool Time::operator<(const Time& other) const
 
 bool Time::operator<=(const Time& other) const
 {
-    if(this->hour <= other.hour && this->minute <= other.minute && this->second <= other.second){
+    if(!(*this > other)) {
         return true;
     }
     return false;
